@@ -60,6 +60,10 @@ code {
   @apply mt-0
 }
 
+.btnTypeTransaction {
+  
+}
+
 .btn-submit {
   @apply
     bg-green

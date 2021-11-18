@@ -10,7 +10,7 @@ Modal.setAppElement('#root');
 export function NewTransactionModal({ isOpen, onRequestClose }) {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState(0);
-  // const [type, setType] = useState('deposit');
+  const [type, setType] = useState('deposit');
   const [category, setCategory] = useState('');
 
   function createNewTransaction(data) {
@@ -63,15 +63,22 @@ export function NewTransactionModal({ isOpen, onRequestClose }) {
 
             <div className="grid grid-cols-2 gap-4 mt-4">
               <button
-                className="w-full border border-bodyBorder flex items-center h-16 justify-center"
+                className={`w-full border border-bodyBorder flex items-center h-16 justify-center
+                  ${type === 'deposit' ? 'bg-background' : ''}
+                `}
+                onClick={() => { setType('deposit') }}
               >
-                <img src={incomeImg} alt="Entrada" className="mr-4" />
+                <img src={incomeImg} alt="Entrada" className="mr-4 w-5 h-5" />
                 <span>Entradas</span>
               </button>
+
               <button
-                className="w-full border border-bodyBorder flex items-center h-16 justify-center"
+                className={`w-full border border-bodyBorder flex items-center h-16 justify-center
+                  ${type === 'withdraw' ? 'bg-background' : ''}
+                `}
+                onClick={() => { setType('withdraw') }}
               >
-                <img src={outcomeImg} alt="Entrada"  className="mr-4" />
+                <img src={outcomeImg} alt="Entrada"  className="mr-4 w-5 h-5" />
                 <span>Entradas</span>
               </button>
             </div>
