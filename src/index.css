@@ -82,5 +82,5 @@ code {
 }
 
 .content-summary {
-  scroll-ali 
+  scroll-snap-align: start;
 }
