@@ -8,8 +8,8 @@ import { Header } from './components/Header';
 import { NewTransactionModal } from './components/NewTransactionModal';
 
 function App() {
-  const [transactions, setTransactions] = useState([]);
   const [transactionsTable, setTransactionsTable] = useState([]);
+  const [transactions, setTransactions] = useState([]);
   
   const [isNewTransactionModalOpen, SetIsNewTransactionModalOpen] = useState(false);
 
@@ -25,44 +25,31 @@ function App() {
     SetIsNewTransactionModalOpen(false);
   }
 
-  
+  const summary = transactionsTable.reduce((acc, transaction) => {
+    if (transaction.type === 'deposit') {
+      acc.deposits += transaction.amount;
+      transaction.total += transaction.amount;
+    } else {
+      acc.withdraws += transaction.amount;
+      transaction.total -= transaction.amount;
+    }
 
-  // const summary = transactionsTable.reduce((acc, transaction) => {
-  //   return acc + transaction.amount;
-  // }, 0);
+    return acc;
+  }, {
+    deposits: 0,
+    withdraws: 0,
+    total: 0
+  });
   
   return (
     <div className="bg-background min-h-screen">
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
-      <DashBoard />
-      
-      {/* <table>
-        <thead>
-          <tr>
-            <th>Título</th>
-            <th>Valor</th>
-            <th>Categoria</th> */}
-            {/* <th>Data</th>
-          {/* </tr>
-        </thead>
-        <tbody>
-          {transactionsTable.map(transaction => (
-            <tr key={transaction.id}>
-              <td>{transaction.title}</td>
-              <td>{transaction.amount}</td>
-              <td>{transaction.category}</td>
-            </tr>
-            ))
-          }
-          <tr>
-            <td>Total: {!summary ? 0 : summary}</td>
-          </tr>
-        </tbody>
-      </table> */}
-
+      <DashBoard transactionsTable={transactionsTable} summary={summary} />
       <NewTransactionModal 
         isOpen={isNewTransactionModalOpen}
         onRequestClose={handleCloseNewTransactionModal}
+        setTransactions={setTransactions}
+        transactions={transactions}
       />
     </div>
   );

@@ -7,27 +7,40 @@ import outcomeImg from '../../assets/outcome.svg';
 
 Modal.setAppElement('#root');
 
-export function NewTransactionModal({ isOpen, onRequestClose }) {
+export function NewTransactionModal({ isOpen, onRequestClose, transactions, setTransactions }) {
   const [title, setTitle] = useState('');
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState();
   const [type, setType] = useState('deposit');
   const [category, setCategory] = useState('');
 
   function createNewTransaction(data) {
-    // const localTransactions = [...transactions];
-    // localTransactions.push(data);
-    // setTransactions(localTransactions);
+    const localTransactions = [...transactions];
+    localTransactions.push(data);
+    setTransactions(localTransactions);
+
+
   }
 
   function handleCreateNewTransaction(e) {
     e.preventDefault();
     
-    // createNewTransaction({
-    //   id: +new Date(),
-    //   title,
-    //   amount,
-    //   category
-    // });
+    const now = new Date();
+    const dateFormatted = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`
+
+    createNewTransaction({
+      id: +new Date(),
+      title,
+      amount,
+      type,
+      category,
+      createdAt: dateFormatted
+    });
+
+    setTitle('');
+    setAmount(0);
+    setType('deposit');
+    setCategory('');
+    onRequestClose();
   }
 
   return (
@@ -55,7 +68,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }) {
             />
             <input
               type="number"
-              placeholder="Valor"
+              placeholder="R$"
               value={amount}
               onChange={e => setAmount(Number(e.target.value))}
               className="input-modal"
@@ -63,6 +76,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }) {
 
             <div className="grid grid-cols-2 gap-4 mt-4">
               <button
+                type='button'
                 className={`w-full border border-bodyBorder flex items-center h-16 justify-center
                   ${type === 'deposit' ? 'bg-background' : ''}
                 `}
@@ -73,6 +87,7 @@ export function NewTransactionModal({ isOpen, onRequestClose }) {
               </button>
 
               <button
+                type='button'
                 className={`w-full border border-bodyBorder flex items-center h-16 justify-center
                   ${type === 'withdraw' ? 'bg-background' : ''}
                 `}
