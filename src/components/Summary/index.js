@@ -8,7 +8,7 @@ export function Summary() {
           <p>Entradas</p>
           <img src={incomeImg} alt="Entradas" />
         </header>
-        <strong className="block mt-4 text-summary font-medium leading-summary">R$1.000,00</strong>
+        <strong className="block mt-4 text-4xl font-medium leading-summary">R$1.000,00</strong>
         <p className="md:hidden text-sm text-text">Última entrada dia 13 de abril</p>
       </div>
 
