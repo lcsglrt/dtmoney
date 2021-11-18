@@ -81,6 +81,11 @@ code {
   scroll-snap-type: x mandatory;
 }
 
+.container-summary::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
 .content-summary {
   scroll-snap-align: start;
 }
