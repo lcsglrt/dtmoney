@@ -4,8 +4,8 @@ import total from '../../assets/total.svg';
 
 export function Summary({ summary }) {
   return (
-    <div className="relative flex -mt-40 overflow-x-auto">
-      <div className="-top-40 bg-shape py-6 px-8 rounded text-title w-72 flex-shrink-0">
+    <div className="relative flex -mt-40 overflow-x-auto container-summary">
+      <div className="-top-40 bg-shape py-6 px-8 rounded text-title w-72 flex-shrink-0 content-summary">
         <header className="flex items-center justify-between">
           <p>Entradas</p>
           <img src={incomeImg} alt="Entradas" />
@@ -16,7 +16,7 @@ export function Summary({ summary }) {
         <p className="md:hidden text-sm text-text">Última entrada dia 13 de abril</p>
       </div>
       
-      <div className="bg-shape py-6 px-8 rounded text-title md:h-auto w-72 mx-8 flex-shrink-0">
+      <div className="bg-shape py-6 px-8 rounded text-title md:h-auto w-72 mx-8 flex-shrink-0 content-summary">
         <header className="flex items-center justify-between">
           <p>Saídas</p>
           <img src={outcomeImg} alt="Entradas" />
@@ -34,7 +34,7 @@ export function Summary({ summary }) {
         <p className="md:hidden text-sm text-text">Última entrada dia 13 de abril</p>
       </div>
 
-      <div className="bg-green py-6 px-8 rounded text-title md:h-auto w-72 flex-shrink-0">
+      <div className="bg-green py-6 px-8 rounded text-title md:h-auto w-72 flex-shrink-0 content-summary">
         <header className="flex items-center justify-between">
           <p className="text-shape">Total</p>
           <img src={total} alt="Entradas" />
