@@ -77,3 +77,10 @@ code {
     rounded
 }
 
+.container-summary {
+  scroll-snap-type: x mandatory;
+}
+
+.content-summary {
+  scroll-ali 
+}
