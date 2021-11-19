@@ -28,10 +28,10 @@ function App() {
   const summary = transactionsTable.reduce((acc, transaction) => {
     if (transaction.type === 'deposit') {
       acc.deposits += transaction.amount;
-      transaction.total += transaction.amount;
+      acc.total += transaction.amount;
     } else {
       acc.withdraws += transaction.amount;
-      transaction.total -= transaction.amount;
+      acc.total -= transaction.amount;
     }
 
     return acc;

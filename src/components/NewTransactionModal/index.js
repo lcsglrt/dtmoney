@@ -94,7 +94,7 @@ export function NewTransactionModal({ isOpen, onRequestClose, transactions, setT
                 onClick={() => { setType('withdraw') }}
               >
                 <img src={outcomeImg} alt="Entrada"  className="mr-4 w-5 h-5" />
-                <span>Entradas</span>
+                <span>Saídas</span>
               </button>
             </div>
 
