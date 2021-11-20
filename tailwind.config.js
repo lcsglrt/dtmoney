@@ -2,7 +2,6 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false,
   theme: {
-    
     maxWidth: {
       'custom': '1120px',
     },
@@ -22,6 +21,9 @@ module.exports = {
     extend: {
       width: {
         'logo': '135px'
+      },
+      spacing: {
+        'modal': '576px'
       },
       lineHeight: {
         'summary': '3rem'

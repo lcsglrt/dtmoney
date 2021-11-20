@@ -8,13 +8,13 @@ import { Header } from './components/Header';
 import { NewTransactionModal } from './components/NewTransactionModal';
 
 function App() {
-  const [transactionsTable, setTransactionsTable] = useState([]);
+  const [transactionsData, setTransactionsData] = useState([]);
   const [transactions, setTransactions] = useState([]);
   
   const [isNewTransactionModalOpen, SetIsNewTransactionModalOpen] = useState(false);
 
   useEffect(() => {
-    setTransactionsTable(transactions);
+    setTransactionsData(transactions);
   }, [transactions]);
 
   function handleOpenNewTransactionModal() {
@@ -25,7 +25,7 @@ function App() {
     SetIsNewTransactionModalOpen(false);
   }
 
-  const summary = transactionsTable.reduce((acc, transaction) => {
+  const summary = transactionsData.reduce((acc, transaction) => {
     if (transaction.type === 'deposit') {
       acc.deposits += transaction.amount;
       acc.total += transaction.amount;
@@ -44,7 +44,7 @@ function App() {
   return (
     <div className="bg-background min-h-screen">
       <Header onOpenNewTransactionModal={handleOpenNewTransactionModal} />
-      <DashBoard transactionsTable={transactionsTable} summary={summary} />
+      <DashBoard transactionsData={transactionsData} summary={summary} />
       <NewTransactionModal 
         isOpen={isNewTransactionModalOpen}
         onRequestClose={handleCloseNewTransactionModal}

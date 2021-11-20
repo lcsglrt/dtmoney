@@ -89,3 +89,7 @@ code {
 .content-summary {
   scroll-snap-align: start;
 }
+
+table {
+  border-spacing: 0 0.5rem;
+}

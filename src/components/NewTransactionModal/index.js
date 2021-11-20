@@ -48,8 +48,9 @@ export function NewTransactionModal({ isOpen, onRequestClose, transactions, setT
       <Modal
         isOpen={isOpen}
         onRequestClose={onRequestClose}
-        overlayClassName="react-modal-overlay"
-        className="react-modal"
+        overlayClassName="react-modal-overlay
+          lg:bg-black lg:bg-opacity-50  lg:fixed  lg:bottom-0  lg:top-0  lg:left-0  lg:right-0  lg:flex  lg:items-center  lg:justify-center"
+        className="react-modal lg:w-modal lg:rounded"
       >
         <div className="flex items-center justify-between">
           <h2 className="text-title font-semibold text-2xl py-8">Cadastrar transação</h2>
