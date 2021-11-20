@@ -41,7 +41,7 @@ export function NewTransactionModal({ isOpen, onRequestClose, transactions, setT
     
     const now = new Date();
     const dateFormatted = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
-    const amountFormatted = Number(amount.substr(3).replace(',','.'));
+    const amountFormatted = Number(amount.slice(3).replace(/[^0-9]/g, ''));
 
     createNewTransaction({
       id: +new Date(),

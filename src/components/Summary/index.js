@@ -40,7 +40,7 @@ export function Summary({ summary, transactionsData }) {
           <img src={incomeImg} alt="Entradas" />
         </header>
         <strong className="block mt-4 text-3xl font-medium leading-summary">
-          {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(summary.deposits)}
+          {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(summary.deposits / 100)}
         </strong>
         <p className="md:hidden text-sm text-text">
           {summaryDates.deposits}
@@ -60,7 +60,7 @@ export function Summary({ summary, transactionsData }) {
             new Intl.NumberFormat('pt-BR', {
             style: 'currency',
             currency: 'BRL'})
-            .format(summary.withdraws)
+            .format(summary.withdraws / 100)
           }
         </strong>
         <p className="md:hidden text-sm text-text">{summaryDates.withdraws}</p>
@@ -74,7 +74,7 @@ export function Summary({ summary, transactionsData }) {
         </header>
         <strong className="block mt-4 text-3xl text-shape font-medium leading-summary">{new Intl.NumberFormat('pt-BR', {
         style: 'currency',
-        currency: 'BRL'}).format(summary.total)}</strong>
+        currency: 'BRL'}).format(summary.total / 100)}</strong>
         <p className="md:hidden text-sm text-shape">{summaryDates.total}</p>
       </div>
     </div>

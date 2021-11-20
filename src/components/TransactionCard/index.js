@@ -4,7 +4,7 @@ export function TransactionCard({ transaction }) {
       <p className="text-title">{transaction.title}</p>
       <p className={transaction.type === 'deposit' ? 'text-green' : 'text-red'}>{new Intl.NumberFormat('pt-BR', {
         style: 'currency',
-        currency: 'BRL'}).format(transaction.amountFormatted)}</p>
+        currency: 'BRL'}).format(transaction.amountFormatted / 100)}</p>
       <div className="flex items-center justify-between pt-6">
         <p className="text-sm text-text">{transaction.category}</p>
         <p className="text-sm text-text">{transaction.createdAt}</p>

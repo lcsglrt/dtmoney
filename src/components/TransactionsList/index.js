@@ -42,7 +42,7 @@ export function TransactionsList({ transactionsData }) {
                   <td className="text-title  py-4 px-8 border-none bg-shape">{transaction.title}</td>
                   <td className={`${transaction.type === 'deposit' ? 'text-green' : 'text-red'} py-4 px-8 border-none bg-shape`}>
                     { transaction.type === 'withdraw' && '- ' }
-                    { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(transaction.amountFormatted) }
+                    { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(transaction.amountFormatted / 100) }
                   </td>
                   <td className="text-text py-4 px-8 border-none bg-shape">{transaction.category}</td>
                   <td className="text-text py-4 px-8 border-none bg-shape">{transaction.createdAt}</td>
