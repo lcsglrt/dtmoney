@@ -33,14 +33,16 @@ export function TransactionsList({ transactionsData }) {
             {
               transactionsData.length === 0 ? 
                 <tr>
-                  <p className="px-8 py-4">Não há transações</p>
+                  <td>
+                    <p className="px-8 py-4">Não há transações</p>
+                  </td>
                 </tr> :
               transactionsData.map(transaction => (
                 <tr key={transaction.id} className="rounded">
                   <td className="text-title  py-4 px-8 border-none bg-shape">{transaction.title}</td>
                   <td className={`${transaction.type === 'deposit' ? 'text-green' : 'text-red'} py-4 px-8 border-none bg-shape`}>
                     { transaction.type === 'withdraw' && '- ' }
-                    { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(transaction.amount) }
+                    { new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(transaction.amountFormatted) }
                   </td>
                   <td className="text-text py-4 px-8 border-none bg-shape">{transaction.category}</td>
                   <td className="text-text py-4 px-8 border-none bg-shape">{transaction.createdAt}</td>

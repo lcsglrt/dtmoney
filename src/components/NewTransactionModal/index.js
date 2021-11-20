@@ -1,15 +1,32 @@
 import Modal from 'react-modal';
 import { useState } from 'react';
 
+import NumberFormat from 'react-number-format';
+
 import closeModalImg from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg';
 import outcomeImg from '../../assets/outcome.svg';
 
+
 Modal.setAppElement('#root');
+
+const currencyConfig = {
+  locale: "pt-BR",
+  formats: {
+    number: {
+      BRL: {
+        style: "currency",
+        currency: "BRL",
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      },
+    },
+  },
+};
 
 export function NewTransactionModal({ isOpen, onRequestClose, transactions, setTransactions }) {
   const [title, setTitle] = useState('');
-  const [amount, setAmount] = useState();
+  const [amount, setAmount] = useState('');
   const [type, setType] = useState('deposit');
   const [category, setCategory] = useState('');
 
@@ -17,30 +34,40 @@ export function NewTransactionModal({ isOpen, onRequestClose, transactions, setT
     const localTransactions = [...transactions];
     localTransactions.push(data);
     setTransactions(localTransactions);
-
-
   }
 
   function handleCreateNewTransaction(e) {
     e.preventDefault();
     
     const now = new Date();
-    const dateFormatted = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`
+    const dateFormatted = `${now.getDate()}/${now.getMonth() + 1}/${now.getFullYear()}`;
+    const amountFormatted = Number(amount.substr(3).replace(',','.'));
 
     createNewTransaction({
       id: +new Date(),
       title,
-      amount,
+      amountFormatted,
       type,
       category,
       createdAt: dateFormatted
     });
 
     setTitle('');
-    setAmount(0);
+    setAmount('');
     setType('deposit');
     setCategory('');
     onRequestClose();
+  }
+  
+  function currencyFormatter(value) {
+    if (!Number(value)) return "";
+  
+    const amount = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL"
+    }).format(value / 100);
+  
+    return `${amount}`;
   }
 
   return (
@@ -67,18 +94,31 @@ export function NewTransactionModal({ isOpen, onRequestClose, transactions, setT
               onChange={e => setTitle(e.target.value)}
               className="input-modal"
             />
-            <input
+
+            {/* <input
               type="number"
               placeholder="R$"
               value={amount}
               onChange={e => setAmount(Number(e.target.value))}
               className="input-modal"
+            /> */}
+
+            <NumberFormat
+              value={amount}
+              onChange={e => setAmount(e.target.value)}
+              displayType={'input'}
+              format={currencyFormatter}
+              thousandSeparator="."
+              decimalSeparator=","
+              prefix={'R$'}
+              className="input-modal"
+              placeholder="R$0,00"
             />
 
             <div className="grid grid-cols-2 gap-4 mt-4">
               <button
                 type='button'
-                className={`w-full border border-bodyBorder flex items-center h-16 justify-center
+                className={`w-full border border-bodyBorder flex items-center h-16 justify-center rounded
                   ${type === 'deposit' ? 'bg-background' : ''}
                 `}
                 onClick={() => { setType('deposit') }}
@@ -89,7 +129,7 @@ export function NewTransactionModal({ isOpen, onRequestClose, transactions, setT
 
               <button
                 type='button'
-                className={`w-full border border-bodyBorder flex items-center h-16 justify-center
+                className={`w-full border border-bodyBorder flex items-center h-16 justify-center rounded
                   ${type === 'withdraw' ? 'bg-background' : ''}
                 `}
                 onClick={() => { setType('withdraw') }}

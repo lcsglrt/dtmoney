@@ -27,11 +27,11 @@ function App() {
 
   const summary = transactionsData.reduce((acc, transaction) => {
     if (transaction.type === 'deposit') {
-      acc.deposits += transaction.amount;
-      acc.total += transaction.amount;
+      acc.deposits += transaction.amountFormatted;
+      acc.total += transaction.amountFormatted;
     } else {
-      acc.withdraws += transaction.amount;
-      acc.total -= transaction.amount;
+      acc.withdraws += transaction.amountFormatted;
+      acc.total -= transaction.amountFormatted;
     }
 
     return acc;
@@ -40,6 +40,8 @@ function App() {
     withdraws: 0,
     total: 0
   });
+
+  console.log(transactionsData);
   
   return (
     <div className="bg-background min-h-screen">
