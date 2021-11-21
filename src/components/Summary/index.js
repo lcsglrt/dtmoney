@@ -42,7 +42,7 @@ export function Summary({ summary, transactionsData }) {
         <strong className="block mt-4 text-3xl font-medium leading-summary">
           {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL'}).format(summary.deposits / 100)}
         </strong>
-        <p className="md:hidden text-sm text-text">
+        <p className="text-sm text-text">
           {summaryDates.deposits}
         </p>
       </div>
@@ -63,7 +63,7 @@ export function Summary({ summary, transactionsData }) {
             .format(summary.withdraws / 100)
           }
         </strong>
-        <p className="md:hidden text-sm text-text">{summaryDates.withdraws}</p>
+        <p className="text-sm text-text">{summaryDates.withdraws}</p>
       </div>
 
       <div className={`${summary.total >= 0 ? 'bg-green' : 'bg-red'} py-6 px-8 rounded text-title w-72 flex-shrink-0 content-summary
@@ -75,7 +75,7 @@ export function Summary({ summary, transactionsData }) {
         <strong className="block mt-4 text-3xl text-shape font-medium leading-summary">{new Intl.NumberFormat('pt-BR', {
         style: 'currency',
         currency: 'BRL'}).format(summary.total / 100)}</strong>
-        <p className="md:hidden text-sm text-shape">{summaryDates.total}</p>
+        <p className="text-sm text-shape">{summaryDates.total}</p>
       </div>
     </div>
   )
