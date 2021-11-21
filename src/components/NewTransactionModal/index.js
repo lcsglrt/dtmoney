@@ -10,20 +10,6 @@ import outcomeImg from '../../assets/outcome.svg';
 
 Modal.setAppElement('#root');
 
-const currencyConfig = {
-  locale: "pt-BR",
-  formats: {
-    number: {
-      BRL: {
-        style: "currency",
-        currency: "BRL",
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2,
-      },
-    },
-  },
-};
-
 export function NewTransactionModal({ isOpen, onRequestClose, transactions, setTransactions }) {
   const [title, setTitle] = useState('');
   const [amount, setAmount] = useState('');
@@ -94,14 +80,6 @@ export function NewTransactionModal({ isOpen, onRequestClose, transactions, setT
               onChange={e => setTitle(e.target.value)}
               className="input-modal"
             />
-
-            {/* <input
-              type="number"
-              placeholder="R$"
-              value={amount}
-              onChange={e => setAmount(Number(e.target.value))}
-              className="input-modal"
-            /> */}
 
             <NumberFormat
               value={amount}
