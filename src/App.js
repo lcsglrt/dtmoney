@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-// import { toast } from 'react-toastify';
 
 import './App.css';
 import { DashBoard } from './components/Dashboard';
