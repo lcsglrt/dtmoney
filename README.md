@@ -10,8 +10,12 @@
   <a href="https://dtmoney.goulartlcs.dev/" target="_blank">
     <img src="./src/assets/logo.svg" alt="dt money" />
   </a>
-  
-  <br />
+  <p align="center">
+    <a href="https://dtmoney.goulartlcs.dev/" target="_blank">
+      <sub>dtmoney.goulartlcs.dev</sub>
+    </a> 
+  </p>
+
   <br />
 
   <p align="center">
