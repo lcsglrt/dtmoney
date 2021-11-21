@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-<h1 align="center">
-  <img src="./src/assets/dtmoney_cover.png" alt="dt money" />
-
-  <br />
-
-  <p align="left">
-    <img src="./src/assets/logo.svg" alt="dt money" />
-  </p>
-</h1>
-
-<p>
-  Projeto front-end que simula a gestão das finanças pessoais.
-  
-  Nela, o usuário poderá registrar as transações de entrada, saída de sua conta e ter uma balanço.
-</p>
-=======
 <div align="center">
   <a href="https://dtmoney.goulartlcs.dev/" target="_blank">
     <img src="./src/assets/dtmoney_cover.png" alt="dt money" />
@@ -100,4 +83,13 @@ $ yarn
 # Execute o projeto
 $ yarn start
 ```
->>>>>>> 1e4c180bc31ab083942a30a7a26d75d1e5944beb
+Acesse [http://localhost:3000/](http://localhost:3000/) para ver o resultado.
+
+<br />
+<br />
+
+Obrigado. 
+
+<sub align="center">
+  Feito com 💚 por <a href="https://instagram.com/goulartlcs/" target="_blank">Lucas Goulart</a>
+</dub>
