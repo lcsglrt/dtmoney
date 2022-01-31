@@ -78,7 +78,7 @@ Este projeto foi desenvolvido com as tecnologias listadas abaixo:
 # Clone este repositório
 $ git clone https://github.com/goulartlcs/dtmoney.git
 
-# Acesse a pasta do repositório via terminar ou cmd
+# Acesse a pasta do repositório via terminal ou cmd
 $ cd dtmoney/
 
 # Instale as dependencias
